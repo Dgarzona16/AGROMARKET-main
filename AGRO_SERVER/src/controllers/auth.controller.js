@@ -52,10 +52,7 @@ export const register = async (req, res) => {
 
 
     await Usr.save();
-    //const token = await Usr.getSignedJwtToken();
-    res.status(201).json({
-      message: "Usuario creado",
-    });
+    res.status(200).json({ message: 'User registered successfully' });
   } catch (e) {
     console.log(e.code);
     console.log(e.message);
@@ -85,7 +82,7 @@ export const refreshToken = (req, res) => {
       "No bearer": "Utiliza el formato bearer",  
       "jwt malformed": "JWT mal formado" 
     };
-    return res.status(401).json({message: tokenVerificationErrors[error.message] || error.message});
+    return res.status(401).json({message: tokenVerificationErrors[e.message] || e.message});
   }
 };
 
