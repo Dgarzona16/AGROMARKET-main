@@ -35,7 +35,7 @@ export const getTransactionByUser = async (req, res) => {
     }
 };
 
-// Cart controllers
+// ---------------Cart controllers----------------------
 export const addToCart = async (req, res) => {
     try {
         const token = req.headers.authorization && req.headers.authorization.split(" ")[1];
@@ -162,7 +162,8 @@ export const clearCart = async (req, res) => {
     }
 };
 
-export const checkout = async (req, res) => {
+// Check user credits before proceeding with the purchase
+export const checkoutWithCredits = async (req, res) => {
     try {
         const token = req.headers.authorization && req.headers.authorization.split(" ")[1];
         const { id } = jwt.verify(token, process.env.SECRET_KEY);
@@ -177,6 +178,16 @@ export const checkout = async (req, res) => {
             return acc + (item.product.price * item.quantity);
         }, 0);
 
+        // Check user credits
+        const user = await user.findById(id);
+        if (user.credits < cart.total) {
+            return res.status(400).json({ message: 'Not enough credits for this purchase' });
+        }
+
+        // Deduct credits from user
+        user.credits -= cart.total;
+        await user.save();
+
         // Create a transaction
         const transaction = await Transaction.create({
             type: 'purchase',
@@ -190,7 +201,7 @@ export const checkout = async (req, res) => {
         cart.total = 0;
         await cart.save();
 
-        return res.status(200).json({ transaction });
+        return res.status(200).json({ message: 'Purchase completed', transaction });
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: 'Server error' });
