@@ -1,6 +1,7 @@
 import { Transaction } from '../models/transaction.js';
 import { Cart } from '../models/cart.js';
 import { Product } from '../models/product.js';
+import { User } from '../models/user.js';
 import jwt from "jsonwebtoken";
 
 export const createTransaction = async (req, res) => {
@@ -193,7 +194,7 @@ export const checkoutWithCredits = async (req, res) => {
         }, 0);
 
         // Check user credits
-        const user = await user.findById(id);
+        const user = await User.findById(id);
         if (user.credits < cart.total) {
             return res.status(400).json({ message: 'Not enough credits for this purchase' });
         }

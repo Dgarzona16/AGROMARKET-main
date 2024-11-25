@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import {tokenRefresh} from '../../helpers/tokenRefresh';
 
 // Función para obtener el token, similar a tu ejemplo
@@ -6,6 +7,51 @@ const getToken = async () => {
   const restoken = await tokenRefresh();
   return restoken ? restoken : localStorage.getItem('token');
 };
+
+const handleCheckout = async () => {
+    try {
+      const token = await getToken(); // Obtener el token
+  
+      // Realizamos el POST al endpoint cart/checkout
+      const response = await fetch(`${import.meta.env.VITE_AGRO_API}transactions/cart/checkout`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      if (response.ok) {
+        // Si la respuesta es exitosa, mostramos un SweetAlert de éxito
+        Swal.fire({
+          title: '¡Éxito!',
+          text: 'El pago se ha realizado correctamente.',
+          icon: 'success',
+          confirmButtonText: 'Aceptar',
+        });
+        return true;
+      } else {
+        // Si hay un error en la respuesta, mostramos un SweetAlert de fallo
+        Swal.fire({
+          title: '¡Error!',
+          text: 'Hubo un problema al procesar el pago. Intenta nuevamente.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar',
+        });
+        return false;
+      }
+    } catch (error) {
+      // En caso de un error al realizar la solicitud, mostramos un SweetAlert de fallo
+      Swal.fire({
+        title: '¡Error!',
+        text: 'Hubo un error al realizar la operación. Intenta nuevamente.',
+        icon: 'error',
+        confirmButtonText: 'Aceptar',
+      });
+      console.error('Error en el checkout:', error);
+      return false;
+    }
+  };
 
 export const Cart = () => {
   const [cart, setCart] = useState(null);
@@ -27,7 +73,8 @@ export const Cart = () => {
         }
 
         const data = await response.json();
-        setCart(data.cart);
+        console.log(data)
+        setCart(data); // Usamos la propiedad cart directamente
       } catch (error) {
         console.error('Error fetching cart data:', error);
       }
@@ -48,15 +95,15 @@ export const Cart = () => {
           <hr className="border-gray-300 mt-4 mb-8" />
 
           <div className="space-y-4">
-            {cart.products.map((item) => (
-              <div key={item._id} className="grid grid-cols-3 items-center gap-4">
+            {cart.cartDetails.map((item) => (
+              <div key={item.productId} className="grid grid-cols-3 items-center gap-4">
                 <div className="col-span-2 flex items-center gap-4">
                   <div className="w-24 h-24 shrink-0 bg-white p-2 rounded-md">
-                    <img src={item.img} className="w-full h-full object-contain" />
+                    <img src={item.image} className="w-full h-full object-contain" />
                   </div>
 
                   <div>
-                    <h3 className="text-base font-bold text-gray-800">Nombre del Producto</h3>
+                    <h3 className="text-base font-bold text-gray-800">{item.name}</h3>
                     <div className="flex gap-4 mt-4">
                       <div>
                         <button
@@ -81,7 +128,7 @@ export const Cart = () => {
                   </div>
                 </div>
                 <div className="ml-auto">
-                  <h4 className="text-base font-bold text-gray-800">${item.productPrice}</h4>
+                  <h4 className="text-base font-bold text-gray-800">${item.price}</h4>
                 </div>
               </div>
             ))}
@@ -98,13 +145,13 @@ export const Cart = () => {
         <div className="bg-gray-100 rounded-md p-4 md:sticky top-0">
           <ul className="text-gray-800 mt-8 space-y-4">
             <li className="flex flex-wrap gap-4 text-base">
-              Discount <span className="ml-auto font-bold">$0.00</span>
+              Descuento <span className="ml-auto font-bold">$0.00</span>
             </li>
             <li className="flex flex-wrap gap-4 text-base">
-              Shipping <span className="ml-auto font-bold">$2.00</span>
+              Envio <span className="ml-auto font-bold">$2.00</span>
             </li>
             <li className="flex flex-wrap gap-4 text-base">
-              Tax <span className="ml-auto font-bold">$0.00</span>
+              Iva <span className="ml-auto font-bold">$0.00</span>
             </li>
             <li className="flex flex-wrap gap-4 text-base font-bold">
               Total <span className="ml-auto">${cart.total + 2}</span>
@@ -114,10 +161,20 @@ export const Cart = () => {
           <div className="mt-8 space-y-2">
             <button
               type="button"
+              onClick={ async () => {
+                let res = await handleCheckout()
+                if(res)
+                    setCart(null)
+            }} // Asociamos el evento al botón
               className="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-blue-600 hover:bg-blue-700 text-white rounded-md"
             >
               Comprar
             </button>
+          </div>
+          <div className="mt-4 flex flex-wrap justify-center gap-4">
+            <img src='https://readymadeui.com/images/master.webp' alt="card1" className="w-10 object-contain" />
+            <img src='https://readymadeui.com/images/visa.webp' alt="card2" className="w-10 object-contain" />
+            <img src='https://readymadeui.com/images/american-express.webp' alt="card3" className="w-10 object-contain" />
           </div>
         </div>
       </div>
