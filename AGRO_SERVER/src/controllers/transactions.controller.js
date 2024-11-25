@@ -108,7 +108,9 @@ export const getCartDetails = async (req, res) => {
             quantity: item.quantity
         }));
 
-        return res.status(200).json({ cartDetails });
+        const total = cart.products.reduce((acc, item) => acc + (item.product.price * item.quantity), 0);
+
+        return res.status(200).json({ cartDetails, total });
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: 'Server error' });
