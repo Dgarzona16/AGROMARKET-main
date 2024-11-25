@@ -14,6 +14,7 @@ import Credits from '../components/credits/credits';
 import CategoryContaniner from '../components/Category Container/categoryContainer.jsx'
 //#endregion
 import Error from '../pages/error/error';
+import { Cart } from '../components/Cart/Cart.jsx';
 
 const createRoutes = createBrowserRouter([
   {
@@ -82,6 +83,11 @@ const createRoutes = createBrowserRouter([
         path: 'credit',
         element: <Credits />,
         id: 'credit',
+      },
+      {
+        path: 'cart',
+        element: <Cart />,
+        id: 'cart'
       }
     ]
   }

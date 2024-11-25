@@ -19,12 +19,17 @@ export const buyproduct = async (product) => {
     const restoken = await tokenRefresh();
 
     const uri = import.meta.env.VITE_AGRO_API;
+    const data = JSON.stringify({
+        productId: product._id,
+        quantity: 1
+    });
     const config = {
         method: 'POST',
-        url: `${uri}products/buy/${product._id}`,
+        url: `${uri}transactions/cart/add`,
         headers: {
             authorization: `Bearer ${restoken ? restoken : localStorage.getItem('token')}`,
-        }
+        },
+        data: data
     }
     const response = await Request(config);
 

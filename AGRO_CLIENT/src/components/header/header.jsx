@@ -95,7 +95,7 @@ const Header = ({ Hook, Value, hookNavigate }) => {
               />
             </svg>
           </button>
-          <button>
+          <button onClick={() => navigate('/home/cart')}>
             <svg
               className='cursor-pointer inline'
               width='24px'
