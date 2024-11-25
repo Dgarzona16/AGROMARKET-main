@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const { Schema, model} = mongoose;
+const { Schema, model } = mongoose;
 
 const productSchema = new Schema({
     name: {
@@ -18,7 +18,7 @@ const productSchema = new Schema({
         type: Number,
         required: true
     },
-    image:{
+    image: {
         type: String,
         required: false
     },
@@ -29,10 +29,6 @@ const productSchema = new Schema({
     measureUnit: {
         type: Schema.Types.ObjectId,
         ref: 'MeasureUnit'
-    },
-    image:{
-        type: String,
-        required: false
     },
     measurement: {
         type: Schema.Types.ObjectId,
@@ -45,6 +41,23 @@ const productSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
+    },
+    grainVariety: {
+        type: String,
+        required: false
+    },
+    quality: {
+        type: String,
+        enum: ['organico', 'convencional'],
+        required: false
+    },
+    harvestYear: {
+        type: Number,
+        required: false
+    },
+    productionMethods: {
+        type: String,
+        required: false
     }
 });
 

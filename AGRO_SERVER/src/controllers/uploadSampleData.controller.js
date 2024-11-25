@@ -75,189 +75,250 @@ export const uploadDataForProducts = async (req, res) => {
     try {
         const products = [
             {
-                name: 'Manzana',
-                description: 'Manzana roja',
-                price: 0.50,
-                image: 'https://walmartsv.vtexassets.com/arquivos/ids/262930/Manzana-Roja-Gran-Un-1-2307.jpg?v=637970712944000000',
-                category: '638286159a9cb12e08c5841e',
-                measureUnit: '638286199a9cb12e08c58427',
-                stock: 10,
-                quantity: 1
-            },
-            {
-                name: 'Pera',
-                description: 'Pera verde',
-                price: 0.45,
-                image: 'https://static.wixstatic.com/media/a7dee3_4c558736f7b243329c59427d855d278c~mv2.jpg/v1/fill/w_640,h_640,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/a7dee3_4c558736f7b243329c59427d855d278c~mv2.jpg',
-                category: '638286159a9cb12e08c5841e',
-                measureUnit: '638286199a9cb12e08c58427',
-                stock: 15,
-                quantity: 1
-            },
-            {
-                name: 'Naranja',
-                description: 'Naranja amarilla',
-                price: 0.30,
-                image: 'https://ik.imagekit.io/plxxfr3casu/catalog/product/1/6/163172.jpg?tr=h-600',
-                category: '638286159a9cb12e08c5841e',
-                measureUnit: '638286199a9cb12e08c58427',
-                stock: 100,
-                quantity: 1
-            },
-            {
-                name: 'Papa',
-                description: 'Papa blanca',
-                price: 0.40,
-                image: 'https://walmartsv.vtexassets.com/arquivos/ids/183851/Papa-Super-Libra-3-Unidades-Por-Lb-Aproximadamente-1-89.jpg?v=637644213610000000',
-                category: '638286159a9cb12e08c5841f',
-                measureUnit: '638286199a9cb12e08c58427',
-                stock: 25,
-                quantity: 1
-            },
-            {
-                name: 'Zanahoria',
-                description: 'Zanahoria naranja',
-                price: 0.80,
-                image: 'https://d1cft8rz0k7w99.cloudfront.net/n/1/d/6/8/1d68c1d738187da47553f341142b74d112637406_196302_01.jpg',
-                category: '638286159a9cb12e08c5841f',
-                measureUnit: '638286199a9cb12e08c58427',
-                stock: 10,
-                quantity: 1
-            },
-            {
-                name: 'Lechuga',
-                description: 'Lechuga verde',
-                price: 1.00,
-                image: 'https://walmartsv.vtexassets.com/arquivos/ids/228502/Lechuga-Arrepollada-Libra-1-Unidad-Por-Lb-Aproximadamente-1-116.jpg?v=637824479372130000',
-                category: '638286159a9cb12e08c5841f',
-                measureUnit: '638286199a9cb12e08c58427',
-                stock: 5,
-                quantity: 1
-            },
-            {
-                name: 'Pollo',
-                description: 'Pollo blanco',
-                price: 2.00,
-                image: 'https://wongfood.vteximg.com.br/arquivos/ids/537798-1000-1000/Pollo-Entero-Fresco-Metro-x-kg-2-183284.jpg?v=637853935618030000',
-                category: '638286159a9cb12e08c58420',
-                measureUnit: '638286199a9cb12e08c58426',
-                stock: 5,
-                quantity: 1
-            },
-            {
-                name: 'Res',
-                description: 'Res roja',
-                price: 3.00,
-                image: 'https://cdn.shopify.com/s/files/1/0571/7557/2638/products/RES58-1_7d85edfa-86a8-4dcd-b56e-30ac1a296c49.jpg?v=1627841553',
-                category: '638286159a9cb12e08c58420',
-                measureUnit: '638286199a9cb12e08c58426',
-                stock: 10,
-                quantity: 1
-            },
-            {
-                name: 'Queso',
-                description: 'Queso blanco',
-                price: 1.00,
-                image: 'https://www.ingredion.com/content/dam/ingredion/mx-images/hero-desktop/AEM-Categories-Hero-Desktop-Cheese.jpg',
-                category: '638286159a9cb12e08c58421',
-                measureUnit: '638286199a9cb12e08c58426',
-                stock: 15,
-                quantity: 1
-            },
-            {
-                name: 'Leche',
-                description: 'Leche entera',
-                price: 0.50,
-                image: 'https://walmartsv.vtexassets.com/arquivos/ids/227471/Leche-Entera-Trebolac-UHT-Tetra-1000ml-2-10262.jpg?v=637818538061670000',
-                category: '638286159a9cb12e08c58421',
-                measureUnit: '638286199a9cb12e08c58426',
-                stock: 20,
-                quantity: 1
-            },
-            {
                 name: 'Arroz',
                 description: 'Arroz blanco',
-                price: 0.50,
-                image: 'https://tiaecuador.vtexassets.com/arquivos/ids/174300/259672000.jpg?v=637472939332800000',
-                category: '638286159a9cb12e08c58424',
-                measureUnit: '638286199a9cb12e08c58426',
-                stock: 30,
-                quantity: 1
+                price: 1.00,
+                image: 'https://www.horticom.com/wp-content/uploads/2022/05/arroz.jpg',
+                category: '638286159a9cb12e08c58421',
+                measureUnit: '638286199a9cb12e08c58425',
+                stock: 10,
+                quantity: 1,
+                grainVariety: 'Japonica',
+                quality: 'Orgánico',
+                harvestYear: 2022,
+                productionMethods: 'Siembra en semilleros'
+            },
+            {
+                name: 'Maíz',
+                description: 'Maíz amarillo',
+                price: 0.80,
+                image: 'https://www.horticom.com/wp-content/uploads/2022/05/maiz.jpg',
+                category: '638286159a9cb12e08c58422',
+                measureUnit: '638286199a9cb12e08c58425',
+                stock: 15,
+                quantity: 1,
+                grainVariety: 'Dentado',
+                quality: 'Convencional',
+                harvestYear: 2023,
+                productionMethods: 'Siembra en línea o hileras'
             },
             {
                 name: 'Frijol',
-                description: 'Frijol',
-                price: 0.75,
-                image: 'https://walmartsv.vtexassets.com/arquivos/ids/203137/Frijol-As-De-Oro-Rojo-Calidad-Exp-1816Gr-1-12010.jpg?v=637716694761500000',
-                category: '638286159a9cb12e08c58424',
-                measureUnit: '638286199a9cb12e08c58426',
-                stock: 30,
-                quantity: 1
+                description: 'Frijol negro',
+                price: 1.20,
+                image: 'https://www.horticom.com/wp-content/uploads/2022/05/frijol.jpg',
+                category: '638286159a9cb12e08c58422',
+                measureUnit: '638286199a9cb12e08c58425',
+                stock: 8,
+                quantity: 1,
+                grainVariety: 'Negro',
+                quality: 'Orgánico',
+                harvestYear: 2022,
+                productionMethods: 'Siembra a voleo'
             },
             {
                 name: 'Cebolla',
                 description: 'Cebolla blanca',
-                price: 0.50,
-                image: 'https://walmartsv.vtexassets.com/arquivos/ids/257258/Cebolla-Blanca-Libra-1-83.jpg?v=637932478470400000',
-                category: '638286159a9cb12e08c5841f',
-                measureUnit: '638286199a9cb12e08c58427',
-                stock: 30,
-                quantity: 1
+                price: 0.70,
+                image: 'https://www.horticom.com/wp-content/uploads/2022/05/cebolla.jpg',
+                category: '638286159a9cb12e08c58422',
+                measureUnit: '638286199a9cb12e08c58426',
+                stock: 12,
+                quantity: 1,
+                grainVariety: 'No aplica',
+                quality: 'Orgánico',
+                harvestYear: 2022,
+                productionMethods: 'Siembra a tresbolillo'
             },
             {
                 name: 'Tomate',
                 description: 'Tomate rojo',
-                price: 0.50,
-                image: 'https://www.elhuertodelabuelo.es/37/tomate-cana-andaluz.jpg',
-                category: '638286159a9cb12e08c5841f',
-                measureUnit: '638286199a9cb12e08c58427',
-                stock: 30,
-                quantity: 1
+                price: 0.90,
+                image: 'https://cdn.shopify.com/s/files/1/0874/8562/products/30254.png?v=1591160191',
+                category: '638286159a9cb12e08c58422',
+                measureUnit: '638286199a9cb12e08c58426',
+                stock: 20,
+                quantity: 1,
+                grainVariety: 'No aplica',
+                quality: 'Convencional',
+                harvestYear: 2023,
+                productionMethods: 'Siembra en hoyos o a chorrillo'
             },
             {
                 name: 'Pepino',
                 description: 'Pepino verde',
-                price: 0.50,
-                image: 'https://www.laprensagrafica.com/__export/1508186157976/sites/prensagrafica/img/2017/10/16/pepinos_2.jpg_2062789929.jpg',
-                category: '638286159a9cb12e08c5841f',
+                price: 0.60,
+                image: 'https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2021/07/pepino.jpg?itok=rBsCuYn7',
+                category: '638286159a9cb12e08c58422',
                 measureUnit: '638286199a9cb12e08c58427',
-                stock: 30,
-                quantity: 1
+                stock: 25,
+                quantity: 1,
+                grainVariety: 'No aplica',
+                quality: 'Orgánico',
+                harvestYear: 2023,
+                productionMethods: 'Siembra en semilleros'
             },
             {
-                name: 'Ajo',
-                description: 'Ajo blanco',
-                price: 0.50,
-                image: 'https://t1.uc.ltmcdn.com/es/posts/7/9/2/cuales_son_los_beneficios_del_ajo_4297_orig.jpg',
-                category: '638286159a9cb12e08c5841f',
+                name: 'Almendra',
+                description: 'Almendra cruda',
+                price: 2.50,
+                image: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Almonds_%28Brittany%29.jpg',
+                category: '638286159a9cb12e08c58423',
                 measureUnit: '638286199a9cb12e08c58427',
-                stock: 30,
-                quantity: 1
+                stock: 50,
+                quantity: 1,
+                grainVariety: 'No aplica',
+                quality: 'Orgánico',
+                harvestYear: 2023,
+                productionMethods: 'Siembra en línea o hileras'
             },
             {
-                name: 'Cilantro',
-                description: 'Cilantro verde',
-                price: 0.50,
-                image: 'https://i5.walmartimages.com/asr/e348344b-f499-43ab-8824-345ed3474766.2d103e10b2855c6e28cfa67f894b55c1.jpeg',
-                category: '638286159a9cb12e08c5841f',
-                measureUnit: '638286199a9cb12e08c58426',
+                name: 'Acelga',
+                description: 'Acelga verde',
+                price: 0.95,
+                image: 'https://s1.eestatic.com/2022/06/03/actualidad/actualidad_562288798_157052617_1024x576.jpg',
+                category: '638286159a9cb12e08c58423',
+                measureUnit: '638286199a9cb12e08c58427',
+                stock: 18,
+                quantity: 1,
+                grainVariety: 'No aplica',
+                quality: 'Orgánico',
+                harvestYear: 2023,
+                productionMethods: 'Siembra a voleo'
+            },
+            {
+                name: 'Zanahoria',
+                description: 'Zanahoria naranja',
+                price: 0.75,
+                image: 'https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2021/04/zanahoria.jpg?itok=FjhjJx9m',
+                category: '638286159a9cb12e08c58423',
+                measureUnit: '638286199a9cb12e08c58427',
+                stock: 22,
+                quantity: 1,
+                grainVariety: 'No aplica',
+                quality: 'Convencional',
+                harvestYear: 2023,
+                productionMethods: 'Siembra en tresbolillo'
+            },
+            {
+                name: 'Lechuga',
+                description: 'Lechuga romana',
+                price: 1.10,
+                image: 'https://www.horticom.com/wp-content/uploads/2022/05/lechuga.jpg',
+                category: '638286159a9cb12e08c58424',
+                measureUnit: '638286199a9cb12e08c58428',
+                stock: 15,
+                quantity: 1,
+                grainVariety: 'No aplica',
+                quality: 'Orgánico',
+                harvestYear: 2023,
+                productionMethods: 'Siembra en semilleros'
+            },
+            {
+                name: 'Pera',
+                description: 'Pera de agua',
+                price: 1.50,
+                image: 'https://www.horticom.com/wp-content/uploads/2022/05/pera.jpg',
+                category: '638286159a9cb12e08c58424',
+                measureUnit: '638286199a9cb12e08c58428',
+                stock: 25,
+                quantity: 1,
+                grainVariety: 'No aplica',
+                quality: 'Orgánico',
+                harvestYear: 2023,
+                productionMethods: 'Siembra a voleo'
+            },
+            {
+                name: 'Durazno',
+                description: 'Durazno rojo',
+                price: 1.80,
+                image: 'https://www.horticom.com/wp-content/uploads/2022/05/durazno.jpg',
+                category: '638286159a9cb12e08c58424',
+                measureUnit: '638286199a9cb12e08c58428',
                 stock: 30,
-                quantity: 1
+                quantity: 1,
+                grainVariety: 'No aplica',
+                quality: 'Convencional',
+                harvestYear: 2023,
+                productionMethods: 'Siembra en hoyos o a chorrillo'
+            },
+            {
+                name: 'Aguacate',
+                description: 'Aguacate Hass',
+                price: 2.00,
+                image: 'https://upload.wikimedia.org/wikipedia/commons/7/74/Aguacate.jpg',
+                category: '638286159a9cb12e08c58425',
+                measureUnit: '638286199a9cb12e08c58429',
+                stock: 35,
+                quantity: 1,
+                grainVariety: 'No aplica',
+                quality: 'Orgánico',
+                harvestYear: 2023,
+                productionMethods: 'Siembra en semilleros'
+            },
+            {
+                name: 'Sandía',
+                description: 'Sandía roja',
+                price: 1.20,
+                image: 'https://upload.wikimedia.org/wikipedia/commons/a/a6/WC_03122022.jpg',
+                category: '638286159a9cb12e08c58425',
+                measureUnit: '638286199a9cb12e08c58429',
+                stock: 40,
+                quantity: 1,
+                grainVariety: 'No aplica',
+                quality: 'Convencional',
+                harvestYear: 2023,
+                productionMethods: 'Siembra en línea o hileras'
             },
             {
                 name: 'Papaya',
-                description: 'Papaya amarilla',
-                price: 0.50,
-                image: 'https://i5.walmartimages.com/asr/f32e3da1-7d18-46ef-8c0a-04f973193469_1.b4adbba1b36ce3a1399a8d9c4781db8b.jpeg',
-                category: '638286159a9cb12e08c5841e',
-                measureUnit: '638286199a9cb12e08c58427',
-                stock: 30,
-                quantity: 1
+                description: 'Papaya hawaiana',
+                price: 0.85,
+                image: 'https://www.horticom.com/wp-content/uploads/2022/05/papaya.jpg',
+                category: '638286159a9cb12e08c58425',
+                measureUnit: '638286199a9cb12e08c58429',
+                stock: 28,
+                quantity: 1,
+                grainVariety: 'No aplica',
+                quality: 'Orgánico',
+                harvestYear: 2023,
+                productionMethods: 'Siembra a tresbolillo'
+            },
+            {
+                name: 'Fresa',
+                description: 'Fresa roja',
+                price: 1.30,
+                image: 'https://www.horticom.com/wp-content/uploads/2022/05/fresa.jpg',
+                category: '638286159a9cb12e08c58426',
+                measureUnit: '638286199a9cb12e08c58430',
+                stock: 18,
+                quantity: 1,
+                grainVariety: 'No aplica',
+                quality: 'Orgánico',
+                harvestYear: 2023,
+                productionMethods: 'Siembra a voleo'
+            },
+            {
+                name: 'Mango',
+                description: 'Mango Ataulfo',
+                price: 1.60,
+                image: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/Mango_ataulfo.jpg',
+                category: '638286159a9cb12e08c58426',
+                measureUnit: '638286199a9cb12e08c58430',
+                stock: 12,
+                quantity: 1,
+                grainVariety: 'No aplica',
+                quality: 'Convencional',
+                harvestYear: 2023,
+                productionMethods: 'Siembra en hoyos o a chorrillo'
             }
-        ]
-        await Product.insertMany(products)
-        res.status(201).json({ message: 'Products created' })
+        ];        
+
+        await Product.insertMany(products);
+
+        return res.status(200).json({ message: 'Productos cargados exitosamente' });
     } catch (error) {
-        res.status(500).json({ message: error.message })
+        console.error(error);
+        return res.status(500).json({ message: 'Error al cargar productos' });
     }
-}
+};
