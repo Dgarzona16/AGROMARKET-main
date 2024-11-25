@@ -184,7 +184,7 @@ export const checkoutWithCredits = async (req, res) => {
         const { id } = jwt.verify(token, process.env.SECRET_KEY);
         const cart = await Cart.findOne({ user: id }).populate('products.product');
 
-        if (!cart) {
+        if (!cart || cart.products.length === 0) {
             return res.status(400).json({ error: 'Cart is empty' });
         }
 
